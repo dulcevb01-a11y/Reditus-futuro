@@ -1,0 +1,177 @@
+<title>Alan Beach Elite</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Italiana&family=Manrope:wght@400;600;700&family=DM+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: lookbook editorial — cabecera con la paleta de referencia, filtros por momento, rejilla de 30 fichas con muestras de color */
+:root {
+  --bg: #F5F2EC;      /* arena blanqueada */
+  --surface: #FFFFFF;
+  --fg: #1C1A17;      /* negro crochet */
+  --muted: #6E655B;
+  --line: #DDD4C7;
+  --accent: #1F7A78;  /* mar turquesa */
+  --wood: #8A5A35;    /* barra de teca */
+  --chip: #EAE3D8;
+  --display: "Italiana", "Didot", "Bodoni 72", Georgia, serif;
+  --body: "Manrope", "Helvetica Neue", Arial, sans-serif;
+  --mono: "DM Mono", ui-monospace, Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #15130F; --surface: #1F1C17; --fg: #F1EBE1; --muted: #A99F92; --line: #3A342C; --accent: #4FB8B3; --wood: #C08A5C; --chip: #2B2720; color-scheme: dark } }
+:root[data-theme="dark"] {
+  --bg: #15130F; --surface: #1F1C17; --fg: #F1EBE1; --muted: #A99F92; --line: #3A342C; --accent: #4FB8B3; --wood: #C08A5C; --chip: #2B2720; color-scheme: dark }
+
+body { background: var(--bg); color: var(--fg); font-family: var(--body); font-size: 15px; line-height: 1.55; }
+.wrap { max-width: 1180px; margin: 0 auto; padding-block: 40px 64px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+header { display: grid; grid-template-columns: 1.3fr 1fr; gap: 32px; align-items: end; border-bottom: 1px solid var(--line); padding-bottom: 28px; }
+@media (max-width: 760px) { header { grid-template-columns: 1fr; } }
+.eyebrow { font-family: var(--mono); font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+h1 { font-family: var(--display); font-weight: 400; font-size: clamp(44px, 8vw, 92px); line-height: .95; margin: 10px 0 14px; text-wrap: balance; }
+h1 em { font-style: normal; color: var(--accent); }
+.lede { max-width: 60ch; color: var(--muted); margin: 0; }
+.ref { display: grid; gap: 10px; }
+.ref h2 { font-family: var(--mono); font-size: 12px; letter-spacing: .12em; text-transform: uppercase; font-weight: 500; margin: 0; color: var(--muted); }
+.palette { display: grid; grid-template-columns: repeat(6, 1fr); border: 1px solid var(--line); }
+.palette div { aspect-ratio: 1 / 1.3; display: flex; align-items: flex-end; padding: 6px; font-family: var(--mono); font-size: 10px; }
+.crochet { background: repeating-linear-gradient(0deg, #111 0 7px, #f4f1ea 7px 10px, #111 10px 17px); color: #fff; }
+.rules { margin: 0; padding-left: 18px; color: var(--fg); font-size: 14px; }
+.rules li + li { margin-top: 4px; }
+
+.filters { display: flex; flex-wrap: wrap; gap: 8px; margin: 28px 0 22px; }
+.filters button { font: 600 13px var(--body); padding: 8px 14px; border-radius: 999px; border: 1px solid var(--line); background: transparent; color: var(--fg); cursor: pointer; }
+.filters button[aria-pressed="true"] { background: var(--fg); color: var(--bg); border-color: var(--fg); }
+.filters button:focus-visible, a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.count { font-family: var(--mono); font-size: 12px; color: var(--muted); margin-left: auto; align-self: center; }
+
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 18px; }
+@media (max-width: 400px) { .grid { grid-template-columns: 1fr; } }
+.card { background: var(--surface); border: 1px solid var(--line); display: grid; grid-template-rows: auto 1fr auto; min-width: 0; }
+.swatch { display: flex; height: 64px; }
+.swatch span { flex: 1; }
+.body { padding: 16px 18px 6px; display: grid; gap: 10px; align-content: start; min-width: 0; }
+.top { display: flex; justify-content: space-between; gap: 10px; align-items: baseline; }
+.num { font-family: var(--mono); font-size: 12px; color: var(--muted); }
+.tag { font-family: var(--mono); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; background: var(--chip); padding: 3px 8px; border-radius: 3px; white-space: nowrap; }
+.card h3 { font-family: var(--display); font-weight: 400; font-size: 28px; line-height: 1.05; margin: 0; text-wrap: balance; }
+dl { margin: 0; display: grid; grid-template-columns: 70px 1fr; gap: 6px 10px; font-size: 14px; }
+dt { font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); padding-top: 2px; }
+dd { margin: 0; min-width: 0; }
+.match { font-size: 13px; color: var(--muted); border-top: 1px dashed var(--line); padding-top: 10px; }
+.match b { color: var(--wood); font-weight: 700; }
+.links { display: flex; gap: 0; border-top: 1px solid var(--line); }
+.links a { flex: 1; text-align: center; padding: 11px 6px; font: 600 13px var(--body); color: var(--accent); text-decoration: none; }
+.links a + a { border-left: 1px solid var(--line); }
+.links a:hover { background: var(--chip); }
+footer { margin-top: 40px; border-top: 1px solid var(--line); padding-top: 20px; color: var(--muted); font-size: 13px; max-width: 70ch; }
+@media (prefers-reduced-motion: no-preference) { .card { transition: transform .2s; } .card:hover { transform: translateY(-2px); } }
+</style>
+
+<div class="wrap">
+  <header>
+    <div>
+      <div class="eyebrow">Lookbook · Playa · 30 outfits</div>
+      <h1>Alan <em>Beach</em> Elite</h1>
+      <p class="lede">Treinta looks de playa para Alan pensados para hacer match con el estilo de la foto: bikini de crochet negro y blanco, gafas ovaladas negras finas, barra de teca y arena blanca. Cada ficha trae la prenda, las gafas y un botón para buscarlas.</p>
+    </div>
+    <div class="ref">
+      <h2>Paleta de referencia</h2>
+      <div class="palette" aria-label="Paleta de la foto">
+        <div class="crochet">crochet</div>
+        <div style="background:#111;color:#eee">negro</div>
+        <div style="background:#F4F1EA;color:#333">marfil</div>
+        <div style="background:#E8DCC6;color:#333">arena</div>
+        <div style="background:#8A5A35;color:#fff">teca</div>
+        <div style="background:#2A8C8C;color:#fff">mar</div>
+      </div>
+      <ul class="rules">
+        <li>Base neutra: negro, blanco, marfil, arena. Nada de estampados ruidosos.</li>
+        <li>Gafas finas: ovaladas o rectangulares negras para espejar las de ella.</li>
+        <li>Texturas premium: lino, crochet, punto calado, toalla, seda.</li>
+        <li>Shorts de baño a 13–15 cm de tiro (corte medio muslo).</li>
+      </ul>
+    </div>
+  </header>
+
+  <div class="filters" role="group" aria-label="Filtrar por momento">
+    <button type="button" id="f-all" data-f="all" aria-pressed="true">Todos</button>
+    <button type="button" id="f-dia" data-f="Día de playa" aria-pressed="false">Día de playa</button>
+    <button type="button" id="f-club" data-f="Beach club" aria-pressed="false">Beach club</button>
+    <button type="button" id="f-yate" data-f="Yate" aria-pressed="false">Yate</button>
+    <button type="button" id="f-atardecer" data-f="Atardecer" aria-pressed="false">Atardecer</button>
+    <button type="button" id="f-cena" data-f="Cena frente al mar" aria-pressed="false">Cena frente al mar</button>
+    <span class="count" id="count">30 looks</span>
+  </div>
+
+  <main class="grid" id="grid"></main>
+
+  <footer>
+    Los botones abren una búsqueda en Google Shopping con las palabras clave de cada prenda. Las marcas citadas son referencias de estilo; busca la misma silueta en tu presupuesto. Talla y ajuste importan más que la marca: camisas con hombro en su sitio, shorts sin sobrar tela y gafas proporcionales al ancho de la cara.
+  </footer>
+</div>
+
+<script>
+const L = [
+ ["Día de playa","Monocromo crochet",["#111111","#F4F1EA","#111111","#E8DCC6"],"Camisa de crochet negra y marfil abierta + short de baño negro liso","Ovaladas finas negras (tipo 90s)","Slides de cuero negro","Es el gemelo directo de su bikini: mismo crochet blanco y negro.","men black ivory crochet shirt","men slim oval black sunglasses"],
+ ["Día de playa","Lino blanco total",["#FFFFFF","#F4F1EA","#E8DCC6","#2A8C8C"],"Camisa de lino blanca manga larga remangada + short de baño blanco hueso","Rectangulares negras acetato","Alpargatas blancas","Blanco contra su negro: contraste limpio en fotos.","men white linen shirt long sleeve","men rectangular black acetate sunglasses"],
+ ["Día de playa","Negro absoluto",["#111111","#1C1C1C","#2B2B2B","#8A5A35"],"Short de baño negro corte medio muslo + camiseta de punto negra sin estampado","Wrap negras deportivas finas","Chanclas de cuero negro","Mismo tono que su parte de abajo; look sobrio y caro.","men black mid thigh swim shorts","men thin black wrap sunglasses"],
+ ["Día de playa","Rayas náuticas",["#111111","#F4F1EA","#111111","#F4F1EA"],"Polo de punto a rayas negro/crudo + short de baño negro","Ovaladas negras","Mocasín de ante sin calcetín","Las rayas repiten el patrón horizontal de su top.","men black cream striped knit polo","men oval black sunglasses"],
+ ["Día de playa","Toalla terry",["#F4F1EA","#E8DCC6","#111111","#2A8C8C"],"Camisa de rizo de toalla color crudo + short de baño negro","Carey (tortoise) redondas","Slides crudo","Textura de toalla = lujo de resort, combina con su crochet.","men terry cloth camp collar shirt cream","men tortoise round sunglasses"],
+ ["Día de playa","Arena y teca",["#E8DCC6","#C9B08F","#8A5A35","#F4F1EA"],"Short de baño beige arena + camisa de lino camel abierta","Marrón translúcido rectangulares","Sandalias de cuero marrón","Se funde con la barra de madera del fondo.","men camel linen shirt","men brown translucent rectangular sunglasses"],
+ ["Día de playa","Turquesa mar",["#2A8C8C","#F4F1EA","#111111","#E8DCC6"],"Short de baño turquesa liso + camiseta blanca de algodón pima","Negras finas ovaladas","Chanclas negras","Un toque de color que resalta su blanco y negro.","men teal solid swim shorts","men slim oval black sunglasses"],
+ ["Día de playa","Tank minimal",["#F4F1EA","#111111","#E8DCC6","#111111"],"Tank top de canalé blanco + short de baño negro + cadena fina plata","Wrap negras","Slides negros","Deportivo pero limpio, ideal para playa de día.","men white ribbed tank top","men black wrap sunglasses 90s"],
+ ["Beach club","Camisa cubana negra",["#111111","#F4F1EA","#8A5A35","#111111"],"Camisa cuello cubano de viscosa negra + pantalón corto de lino crudo","Ovaladas negras brillantes","Mocasines marrones","Elegancia nocturna desde las 4 pm; negro con negro.","men black viscose camp collar shirt","men glossy black oval sunglasses"],
+ ["Beach club","Punto calado",["#F4F1EA","#E8DCC6","#111111","#2A8C8C"],"Polo de punto calado (open-knit) marfil + short sastre negro","Rectangulares negras","Mocasín ante negro","El calado es el primo masculino del crochet de ella.","men open knit polo ivory","men rectangular black sunglasses"],
+ ["Beach club","Seda estampada sobria",["#111111","#F4F1EA","#4E6B3A","#E8DCC6"],"Camisa de seda con estampado de palmas en negro/crudo + short de baño negro","Carey cuadradas","Slides de cuero negro","Palmas como las del fondo, en blanco y negro.","men silk shirt black white palm print","men tortoise square sunglasses"],
+ ["Beach club","Crochet abierto",["#F4F1EA","#111111","#F4F1EA","#8A5A35"],"Camisa de crochet crudo abierta sobre torso + short de baño negro","Ovaladas negras finas","Sandalias de tiras marrones","El match más evidente: crochet con crochet.","men cream crochet button shirt","men slim black oval sunglasses"],
+ ["Beach club","Total white club",["#FFFFFF","#F4F1EA","#FFFFFF","#C9A55C"],"Camiseta de punto blanca + short sastre blanco + reloj dorado","Aviador dorado lente oscuro","Sneakers blancos minimal","Blanco luminoso junto a su negro; fotos de contraste.","men white tailored shorts","men gold aviator sunglasses"],
+ ["Beach club","Retro tennis",["#F4F1EA","#2A8C8C","#111111","#F4F1EA"],"Polo de punto crudo con ribete turquesa + short sastre negro","Rectangulares negras","Sneakers blancos","Vibra club privado de playa.","men vintage knit polo contrast trim","men black rectangular sunglasses"],
+ ["Beach club","Kimono lino",["#111111","#E8DCC6","#F4F1EA","#111111"],"Sobrecamisa kimono de lino negro + short de baño arena","Wrap negras","Slides negros","Capa ligera que se ve editorial al lado de ella.","men black linen kimono shirt","men black wrap sunglasses"],
+ ["Beach club","Bowling crudo",["#F4F1EA","#111111","#E8DCC6","#8A5A35"],"Camisa bowling crudo con panel negro + short de baño negro","Ovaladas carey","Mocasín marrón","Bloques de color blanco y negro como su bikini.","men cream black panel bowling shirt","men tortoise oval sunglasses"],
+ ["Yate","Navy & blanco",["#1B2A3A","#FFFFFF","#E8DCC6","#2A8C8C"],"Polo de manga corta azul marino de punto + short de baño blanco","Aviador plata lente azul","Náuticos de cuero","Clásico de yate que no compite con su look.","men navy knit polo short sleeve","men silver aviator blue lens sunglasses"],
+ ["Yate","Lino sobre lino",["#F4F1EA","#E8DCC6","#F4F1EA","#111111"],"Camisa y pantalón de lino crudo a juego + cinturón de cuerda","Rectangulares negras","Alpargatas negras","Conjunto completo = estatus. Ella aporta el negro.","men cream linen set shirt trousers","men rectangular black sunglasses"],
+ ["Yate","Rayas Breton",["#F4F1EA","#1B2A3A","#F4F1EA","#2A8C8C"],"Camiseta Breton manga corta + short de baño marino","Persol estilo plegable","Náuticos blancos","Mediterráneo clásico; rayas como su top.","men breton stripe tee short sleeve","men folding pilot sunglasses tortoise"],
+ ["Yate","Negro deportivo",["#111111","#2B2B2B","#F4F1EA","#2A8C8C"],"Rashguard negro de manga corta + short de baño negro","Wrap deportivas lente espejo","Chanclas negras","Para nadar/jet ski sin perder estilo.","men black short sleeve rash guard","men sport wrap mirror sunglasses"],
+ ["Yate","Cardigan ligero",["#E8DCC6","#F4F1EA","#111111","#8A5A35"],"Cárdigan de algodón arena abierto sin camisa debajo + short de baño negro","Carey redondas","Mocasín de ante","Textura de punto que acompaña su crochet.","men lightweight cotton cardigan sand","men tortoise round sunglasses"],
+ ["Atardecer","Hora dorada",["#C9A55C","#F4F1EA","#8A5A35","#111111"],"Camisa de lino mostaza suave abierta + short de baño negro + cadena dorada","Aviador dorado","Sandalias marrones","Brilla con la luz del atardecer sobre la madera.","men mustard linen shirt","men gold aviator sunglasses"],
+ ["Atardecer","Bruma gris",["#8C8A85","#F4F1EA","#111111","#E8DCC6"],"Camiseta de lino gris piedra + short sastre negro","Ovaladas negras","Mocasín negro","Gris neutro entre su blanco y negro.","men stone grey linen tee","men oval black sunglasses"],
+ ["Atardecer","Sobrecamisa teca",["#8A5A35","#E8DCC6","#F4F1EA","#111111"],"Sobrecamisa de lino color teca + camiseta blanca + short arena","Marrón translúcido","Sandalias de cuero","Tono madera = mismo set que la foto.","men brown linen overshirt","men brown translucent sunglasses"],
+ ["Atardecer","Henley crudo",["#F4F1EA","#E8DCC6","#111111","#2A8C8C"],"Henley de lino crudo manga larga + short de baño negro","Rectangulares carey","Descalzo / slides","Relajado, perfecto para caminar en la orilla.","men linen henley long sleeve cream","men tortoise rectangular sunglasses"],
+ ["Cena frente al mar","Negro elegante",["#111111","#111111","#F4F1EA","#C9A55C"],"Camisa de lino negra + pantalón de lino negro + reloj dorado","Negras finas (o sin gafas de noche)","Mocasines de ante negro","Total black para una cena junto a su vestido o pareo.","men black linen trousers","men slim black sunglasses"],
+ ["Cena frente al mar","Marfil y negro",["#F4F1EA","#111111","#F4F1EA","#8A5A35"],"Camisa cuello cubano marfil + pantalón de lino negro","Ovaladas negras","Mocasín marrón","Divide los colores de su bikini entre arriba y abajo.","men ivory camp collar shirt","men oval black sunglasses"],
+ ["Cena frente al mar","Polo de punto fino",["#111111","#E8DCC6","#111111","#C9A55C"],"Polo de punto fino negro manga larga + pantalón plisado arena","Aviador dorado","Mocasín de cuero","Look de cena en Tulum / Mykonos.","men black fine knit long sleeve polo","men gold aviator sunglasses"],
+ ["Cena frente al mar","Lino azul noche",["#1B2A3A","#F4F1EA","#111111","#2A8C8C"],"Camisa de lino azul noche + pantalón de lino crudo","Rectangulares negras","Alpargatas de ante","Azul profundo como el mar al anochecer.","men midnight blue linen shirt","men rectangular black sunglasses"],
+ ["Cena frente al mar","Crochet de noche",["#111111","#F4F1EA","#111111","#C9A55C"],"Camisa de crochet negra sobre camiseta negra + pantalón negro","Ovaladas negras finas","Mocasín negro","El cierre perfecto: su mismo crochet en versión noche.","men black crochet shirt","men slim black oval sunglasses"]
+];
+const q = s => "https://www.google.com/search?tbm=shop&q=" + encodeURIComponent(s);
+const esc = s => s.replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const grid = document.getElementById("grid");
+grid.innerHTML = L.map((o, i) => `
+<article class="card" data-m="${esc(o[0])}">
+  <div class="swatch" aria-hidden="true">${o[2].map(c => `<span style="background:${c}"></span>`).join("")}</div>
+  <div class="body">
+    <div class="top"><span class="num">Look ${String(i + 1).padStart(2, "0")} / 30</span><span class="tag">${esc(o[0])}</span></div>
+    <h3>${esc(o[1])}</h3>
+    <dl>
+      <dt>Ropa</dt><dd>${esc(o[3])}</dd>
+      <dt>Gafas</dt><dd>${esc(o[4])}</dd>
+      <dt>Calzado</dt><dd>${esc(o[5])}</dd>
+    </dl>
+    <p class="match"><b>Match:</b> ${esc(o[6])}</p>
+  </div>
+  <div class="links">
+    <a href="${q(o[7])}" target="_blank" rel="noopener">Buscar ropa</a>
+    <a href="${q(o[8])}" target="_blank" rel="noopener">Buscar gafas</a>
+  </div>
+</article>`).join("");
+const btns = document.querySelectorAll(".filters button");
+const count = document.getElementById("count");
+btns.forEach(b => b.addEventListener("click", () => {
+  btns.forEach(x => x.setAttribute("aria-pressed", x === b ? "true" : "false"));
+  let n = 0;
+  grid.querySelectorAll(".card").forEach(c => {
+    const show = b.dataset.f === "all" || c.dataset.m === b.dataset.f;
+    c.hidden = !show; if (show) n++;
+  });
+  count.textContent = n + " looks";
+}));
+</script>
